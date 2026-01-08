@@ -1,0 +1,34 @@
+[Start] Starting Hardware Compilation at 2026/01/05 周一 22:58:06.98 
+aoc: Environment checks are completed successfully.
+aoc: Cached files in C:\Users\david\AppData\Local\aocl may be used to reduce compilation time
+You are now compiling the full flow!!
+aoc: Selected target board de10_nano_sharedonly
+aoc: Running OpenCL parser....
+aoc: OpenCL parser completed successfully.
+aoc: Optimizing and doing static analysis of code...
+aoc: Linking with IP library ...
+Checking if memory usage is larger than 100%
+Compiler Warning: Auto-unrolled loop at g:\intelFPGA\18.1\hld\students_workspace\dukaijie25\lenet5/g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl:95
+Compiler Warning: Auto-unrolled loop at g:\intelFPGA\18.1\hld\students_workspace\dukaijie25\lenet5/g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl:94
+
+!===========================================================================
+! The report below may be inaccurate. A more comprehensive           
+! resource usage report can be found at cnn/reports/report.html    
+!===========================================================================
+
++--------------------------------------------------------------------+
+; Estimated Resource Usage Summary                                   ;
++----------------------------------------+---------------------------+
+; Resource                               + Usage                     ;
++----------------------------------------+---------------------------+
+; Logic utilization                      ;  177%                     ;
+; ALUTs                                  ;  130%                     ;
+; Dedicated logic registers              ;   61%                     ;
+; Memory blocks                          ;   82%                     ;
+; DSP blocks                             ;   61%                     ;
++----------------------------------------+---------------------------;
+aoc: First stage compilation completed successfully.
+Compiling for FPGA. This process may take a long time, please be patient.
+Error (170012): Fitter requires 4618 LABs to implement the design, but the device contains only 4191 LABs
+Error: Cannot fit kernel(s) on device
+[End] Compilation Finished at 2026/01/05 周一 23:58:40.63 
