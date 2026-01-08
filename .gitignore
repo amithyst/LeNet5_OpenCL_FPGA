@@ -1,5 +1,4 @@
-"bin/" 
-"data/" 
-"*.aoco" 
-"*.source" 
-".ipynb_checkpoints/" 
+data/
+*.aoco
+*.source"
+.ipynb_checkpoints/"
