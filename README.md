@@ -142,9 +142,9 @@
 
     ```text
     lenet5_25dkj/
+        ├─host # 放bin下也可以运行，有文件路径适配，只要是在根目录下执行命令即可
         ├─bin/
         │      cnn.aocx
-        │      host
         ├─data/
         │  └─MNIST/
         │      └─raw/
@@ -323,3 +323,126 @@
     +----------------------------------------+---------------------------;
     ```
 
+### 6.3 版本演进与优化深度分析 (Version Evolution Analysis)
+
+本项目经历了从纯串行到计算并行，再到访存优化的完整迭代过程。以下是各版本的核心策略与成败复盘：
+
+```mermaid
+graph TD
+    subgraph DDR_Memory [外部 DDR 显存]
+        Data[输入图像数据]
+    end
+
+    %% ================= v1.0 =================
+    subgraph v10 [v1.0: Baseline 串行基准]
+        direction TB
+        Loop1[串行循环 25次] --> Read1(单次读取 1个 float)
+        Read1 -.->|高延迟| DDR_Memory
+        Read1 --> MAC1(1个乘加器 MAC)
+        MAC1 --> Loop1
+        Loop1 --> Out1(输出 1个像素)
+        
+        note1[特点: 计算慢, 访存碎]
+    end
+
+    %% ================= v2.0 =================
+    subgraph v20 [v2.0: Inner-Loop Unroll 计算流水线]
+        direction TB
+        Loop2[串行循环 5次 行遍历] --> Unroll2{内层展开 5次}
+        Unroll2 --> Read2a(读取)
+        Unroll2 --> Read2b(读取)
+        Unroll2 --> Read2c(...)
+        Read2a -.->|频繁请求| DDR_Memory
+        Read2b -.-> DDR_Memory
+        
+        Read2a --> MAC2a(MAC x5 并行计算)
+        Read2b --> MAC2a
+        MAC2a --> AdderTree2(加法树)
+        AdderTree2 --> Loop2
+        Loop2 --> Out2(输出 1个像素)
+
+        note2[特点: 计算快, 访存依然碎]
+    end
+
+    %% ================= v2.2 =================
+    subgraph v22 [v2.2: Coalesced Final 最终优化]
+        direction TB
+        Loop3[串行循环 5次 行遍历] --> BurstRead(内存合并突发读取 Burst Read)
+        BurstRead -- "高效宽总线请求 (5 floats)" --> DDR_Memory
+        
+        BurstRead --> MAC3(MAC x5 并行计算)
+        MAC3 --> AdderTree3(加法树)
+        AdderTree3 --> Loop3
+        Loop3 --> Out3(输出 1个像素)
+
+        note3[特点: 计算快, 访存高效合并]
+    end
+
+    v10 --> v20 --> v22
+```
+
+#### **v1.0: Baseline (串行基准版)**
+* **策略**: 采用 `num_simd_work_items(1)` 和 `#pragma unroll 1` 强制串行执行。
+* **表现**: 120 FPS / Logic ~34%。
+* **优劣**:
+    * ✅ **优势**: 逻辑资源占用极低，编译成功率 100%，适合作为功能验证的基准。
+    * ❌ **劣势**: 访存效率极低。对于 5x5 卷积，每计算 1 个像素需发起 25 次 DDR 读取请求，DDR 带宽成为绝对瓶颈。
+
+#### **v2.0: Inner-Loop Unroll (计算流水线版)**
+* **策略**: 保持单线程 (SIMD=1)，但对卷积核的最内层循环 (`j=0..4`) 进行完全展开。
+* **表现**: 176 FPS / Logic 65%。
+* **优劣**:
+    * ✅ **优势**: 利用 FPGA 的并行乘法器资源，实现了计算流水线化，吞吐量提升约 47%。
+    * ❌ **劣势**: 仅解决了“算得慢”的问题，未彻底解决“读得慢”的问题，访存依然存在大量重复。
+
+#### **v2.2: Coalesced Optimization (最终平衡版)**
+* **策略**: 回退至 v2.0 架构，但利用编译器特性优化内存访问模式 (Memory Coalescing)。
+* **表现**: **191 FPS** / Logic 65%。
+* **核心改进**:
+    * 通过手动展开读取循环，引导编译器生成 **Burst Read** (突发读取) 指令。
+    * 虽然没有显式的 Line Buffer，但编译器一次性读取连续的 5 个 float 数据，大幅减少了 DDR 的握手开销。
+* **结论**: 这是在 Cyclone V (DE10-Nano) 硬件限制下的最佳性能/资源平衡点，实现了比 v1.0 提升 **59%** 的最终性能。
+
+#### **v3.0: Line Buffer (访存优化失败案例)**
+* **策略**: 试图实现全量 Shift Register 和 Line Buffer (`float out_line[28]`) 以将访存降低至 1/25。
+* **表现**: **编译失败** (Estimate 94% -> Fitting Error)。
+* **失效分析 (Critical Analysis)**:
+    * **估算陷阱**: 早期编译报告 (Estimate) 显示 Logic 占用 **94%**，并未爆表。
+    * **布线爆炸**: 在 Fitting 阶段，编译器为了维持高流水线频率，对 `out_line` 数组进行了**流水线复制 (Pipeline Replication)**。原本仅数百个寄存器的数组，被复制了上百级流水线深度，最终导致需求寄存器数达到 **178,009** (远超 DE10-Nano 的 167,640 上限)。
+    * **结论**: 对于资源受限的入门级 FPGA，过度的片上缓存策略会导致寄存器溢出。
+
+```mermaid
+graph LR
+    subgraph FPGA_Resources [DE10-Nano 有限的寄存器资源池 100%]
+        style FPGA_Resources fill:#eee,stroke:#333
+        
+        subgraph Logical_View [逻辑设计视角 Estimate]
+            style Logical_View fill:#dff,stroke:none
+            CodeDef[代码定义: float out_line 28]
+            RegUsage1[需求: 约 900 个寄存器]
+            noteL[早期估算: 94% 看起来很安全]
+            CodeDef --> RegUsage1
+        end
+
+        subgraph Physical_View [物理布线视角 Fitting]
+            style Physical_View fill:#fdb,stroke:none
+            PipelineNeeds[编译器需求: 高频率流水线]
+            
+            Replication[流水线复制效应 Replication]
+            PipelineNeeds --> Replication
+            
+            Stage1[流水线级1: out_line副本]
+            Stage2[流水线级2: out_line副本]
+            StageN[...级N: out_line副本]
+            
+            Replication --> Stage1 & Stage2 & StageN
+            
+            TotalUsage[实际需求: >17万寄存器 112%]
+            Stage1 & Stage2 & StageN --> TotalUsage
+            
+            Explosion((资源爆炸!))
+            style Explosion fill:#f00,color:white,stroke:none
+            TotalUsage --> Explosion
+        end
+    end
+```
