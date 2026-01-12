@@ -9,6 +9,8 @@
 
 ### 1.1 系统与环境
     ```bash
+    # 按enter
+    root
     # 1. 初始化 OpenCL 驱动环境 (每次登录必做)
     source /home/root/init_opencl.sh
     
@@ -28,6 +30,10 @@
     cd /home/root/lenet_deploy/lenet5_25dkj/
     cp /mnt/lenet5_25dkj/bin/host .
     chmod +x host
+
+    # 更新呢aocx程序
+    cd /home/root/lenet_deploy/lenet5_25dkj/bin/
+    cp /mnt/lenet5_25dkj/bin/cnn.aocx .
     
     # 3. 安全卸载 U 盘 (必须先退出 /mnt 目录)
     cd ~
@@ -42,7 +48,7 @@
     
     # 2. 批量测试准确率与性能 (推荐)
     # -n 参数指定图片数量
-    ./host -n 100
+    ./host -n 1000
     ```
 
 
@@ -167,6 +173,15 @@
 
 ## 3. 开发历史与变更日志 (Changelog)
 
+### [2026-01-09] 阶段七：计划实施访存优化 (Line Buffer)
+**目标**: 解决 5x5 卷积重复读取 DDR 的问题，进一步降低延迟。
+
+### [2026-01-09] 阶段六：完成计算并行优化 (v2.0)
+**主要变更**:
+1.  **流水线重构**: 修改 `cnn.cl`，保持 SIMD=1 但对卷积核最内层循环 (`j=0..4`) 进行完全展开 (#pragma unroll)。
+2.  **性能突破**: 吞吐量提升 47% (120 -> 176 FPS)，Logic 资源占用保持在健康范围。
+3.  **系统风险**: 发现 SD 卡出现 EXT4 文件系统错误 (error count: 12)，已做好异地备份。
+
 ### [2026-01-08] 阶段五：批量测试与性能达标
 **主要变更**:
 1.  **功能升级**: 重构 `main.cpp`，引入 `-n` 命令行参数支持批量推理。
@@ -252,7 +267,13 @@
 | **吞吐量 (Throughput)** | 119.53 FPS | 串行化优化版本 |
 | **硬件占用 (Logic)** | ~34% | 详见报告 report.html |
 
-### 6.1 最新实验数据 (Baseline Benchmark)
+### 6.1 v1.0实验数据 (Baseline Benchmark)
 | 测试样本量 | 准确率 (Accuracy) | 平均延迟 (Latency) | 吞吐量 (Throughput) |
 | :--- | :--- | :--- | :--- |
 | 1,000 张 | 97.50% | 8.31 ms | 120.33 FPS |
+
+### 6.1 v2.0实验数据 (Benchmark)
+| 版本 | 策略 | 准确率 | 延迟 (Latency) | 吞吐量 (Throughput) | 备注 |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| v1.0 | Baseline (Serial) | 97.50% | 8.31 ms | 120.33 FPS | 串行安全版 |
+| **v2.0** | **Inner-Loop Unroll** | **97.50%** | **5.68 ms** | **176.15 FPS** | **流水线优化** |
