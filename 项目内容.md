@@ -261,6 +261,48 @@
 
 ## 6. 最终实验结果 (Benchmark)
 
+
+```mermaid
+graph LR
+    subgraph Input_Layer [输入层]
+        In[32x32 灰度图]
+    end
+
+    subgraph C1_Layer [C1: 卷积层]
+        In -->|5x5 核 / 6 ch| C1[28x28x6 特征图]
+    end
+
+    subgraph S2_Layer [S2: 池化层]
+        C1 -->|2x2 MaxPool| S2[14x14x6 特征图]
+    end
+
+    subgraph C3_Layer [C3: 卷积层]
+        S2 -->|5x5 核 / 16 ch| C3[10x10x16 特征图]
+    end
+
+    subgraph S4_Layer [S4: 池化层]
+        C3 -->|2x2 MaxPool| S4[5x5x16 特征图]
+    end
+
+    subgraph C5_Layer [C5: 卷积/全连接层]
+        S4 -->|5x5 核 / 120 ch| C5[1x1x120 向量]
+    end
+
+    subgraph F6_Layer [F6: 全连接层]
+        C5 -->|Dense| F6[84 节点]
+    end
+
+    subgraph Output_Layer [输出层]
+        F6 -->|Dense + Softmax| Out[10 类别概率]
+    end
+
+    style In fill:#f9f
+    style Out fill:#9f9
+    style C1 fill:#dff
+    style C3 fill:#dff
+    style C5 fill:#dff
+```
+
 ### 6.1 版本性能对比 (Performance Comparison)
 
 所有测试均基于 MNIST 测试集前 **1000** 张图片进行。

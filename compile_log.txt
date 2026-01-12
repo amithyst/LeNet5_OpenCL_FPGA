@@ -1,4 +1,4 @@
-[Start] Starting Hardware Compilation at 2026/01/12 锟斤拷一 16:18:33.16 
+[Start] Starting Hardware Compilation at 2026/01/12 周一 18:02:21.42 
 aoc: Environment checks are completed successfully.
 aoc: Cached files in C:\Users\david\AppData\Local\aocl may be used to reduce compilation time
 You are now compiling the full flow!!
@@ -10,8 +10,8 @@ aoc: Linking with IP library ...
 Checking if memory usage is larger than 100%
 
 !===========================================================================
-! The report below may be inaccurate. A more comprehensive
-! resource usage report can be found at cnn/reports/report.html
+! The report below may be inaccurate. A more comprehensive           
+! resource usage report can be found at cnn/reports/report.html    
 !===========================================================================
 
 +--------------------------------------------------------------------+
@@ -27,3 +27,5 @@ Checking if memory usage is larger than 100%
 +----------------------------------------+---------------------------;
 aoc: First stage compilation completed successfully.
 Compiling for FPGA. This process may take a long time, please be patient.
+aoc: Hardware generation completed successfully.
+[End] Compilation Finished at 2026/01/12 周一 18:57:23.12 

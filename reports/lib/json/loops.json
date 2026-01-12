@@ -1,0 +1,306 @@
+{
+  "columns":
+  ["", "Pipelined", "II", "Bottleneck", "Details"]
+  , "children":
+  [
+    {
+      "name":"Kernel: conv2d"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+            , "line":27
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"conv2d.B1"
+          , "data":
+          ["Yes", "52628672", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                , "line":38
+              }
+            ]
+            , [
+              {
+                "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                , "line":38
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 256"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 256"
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"Coalesced loop"
+              , "data":
+              ["n/a", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                    , "line":43
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Auto-coalesced"
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"Fully unrolled loop"
+                  , "data":
+                  ["n/a", "n/a", "n/a"]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":51
+                      }
+                    ]
+                  ]
+                  , "details":
+                  [
+                    {
+                      "type":"brief"
+                      , "text":"Unrolled by #pragma unroll"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"Unrolled by #pragma unroll"
+                    }
+                  ]
+                  , "children":
+                  [
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"Kernel: maxpool2d"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+            , "line":72
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"Fully unrolled loop"
+          , "data":
+          ["n/a", "n/a", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                , "line":82
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Unrolled by #pragma unroll"
+            }
+            , {
+              "type":"text"
+              , "text":"Unrolled by #pragma unroll"
+            }
+          ]
+          , "children":
+          [
+            {
+              "name":"Fully unrolled loop"
+              , "data":
+              ["n/a", "n/a", "n/a"]
+              , "debug":
+              [
+                [
+                  {
+                    "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                    , "line":84
+                  }
+                ]
+              ]
+              , "details":
+              [
+                {
+                  "type":"brief"
+                  , "text":"Unrolled by #pragma unroll"
+                }
+                , {
+                  "type":"text"
+                  , "text":"Unrolled by #pragma unroll"
+                }
+              ]
+              , "children":
+              [
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"Kernel: fc_layer"
+      , "data":
+      ["", "", ""]
+      , "debug":
+      [
+        [
+          {
+            "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+            , "line":107
+          }
+        ]
+      ]
+      , "details":
+      [
+        {
+          "type":"brief"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"ND-Range"
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Kernels"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#ipp1476408832230"
+            }
+          ]
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"8X Partially unrolled fc_layer.B1"
+          , "data":
+          ["Yes", "52628672", "n/a"]
+          , "debug":
+          [
+            [
+              {
+                "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                , "line":117
+              }
+            ]
+            , [
+              {
+                "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                , "line":117
+              }
+            ]
+            , [
+              {
+                "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                , "line":119
+              }
+            ]
+          ]
+          , "details":
+          [
+            {
+              "type":"brief"
+              , "text":"Thread capacity = 288"
+            }
+            , {
+              "type":"text"
+              , "text":"Thread capacity = 288"
+            }
+          ]
+          , "children":
+          [
+          ]
+        }
+      ]
+    }
+  ]
+}

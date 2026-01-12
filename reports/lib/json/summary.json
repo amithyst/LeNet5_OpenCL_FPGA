@@ -1,0 +1,338 @@
+{
+  "performanceSummary":
+  {
+    "name":"Kernel Summary"
+    , "columns":
+    ["Kernel Name", "Kernel Type", "Autorun", "Workgroup Size", "# Compute Units"]
+    , "children":
+    [
+      {
+        "name":"conv2d"
+        , "data":
+        [
+          "NDRange"
+          , "No"
+          , [1, 1, 1]
+          , 1
+        ]
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Kernel type: NDRange"
+          }
+          , {
+            "type":"text"
+            , "text":"Vectorization: The kernel was vectorized for 1 SIMD work-items along the lowest dimension."
+          }
+          , {
+            "type":"text"
+            , "text":"Required workgroup size: (1, 1, 1)"
+          }
+          , {
+            "type":"text"
+            , "text":"Maximum workgroup size: 1"
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":27
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"fc_layer"
+        , "data":
+        [
+          "NDRange"
+          , "No"
+          , [1, 1, 1]
+          , 1
+        ]
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Kernel type: NDRange"
+          }
+          , {
+            "type":"text"
+            , "text":"Vectorization: The kernel was vectorized for 1 SIMD work-items along the lowest dimension."
+          }
+          , {
+            "type":"text"
+            , "text":"Required workgroup size: (1, 1, 1)"
+          }
+          , {
+            "type":"text"
+            , "text":"Maximum workgroup size: 1"
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":107
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"maxpool2d"
+        , "data":
+        [
+          "NDRange"
+          , "No"
+          , [1, 1, 1]
+          , 1
+        ]
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Kernel type: NDRange"
+          }
+          , {
+            "type":"text"
+            , "text":"Vectorization: The kernel was vectorized for 1 SIMD work-items along the lowest dimension."
+          }
+          , {
+            "type":"text"
+            , "text":"Required workgroup size: (1, 1, 1)"
+          }
+          , {
+            "type":"text"
+            , "text":"Maximum workgroup size: 1"
+          }
+          , {
+            "type":"text"
+            , "text":"The kernel does not use any work-group information (such as get_local_id() or get_group_id()).Local work-group size will be automatically modified to match global work-group size on launch.This is a hardware optimization."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":72
+            }
+          ]
+        ]
+      }
+    ]
+  }
+  , "estimatedResources":
+  {
+    "name":"Estimated Resource Usage"
+    , "columns":
+    ["Kernel Name", "ALUTs ", "FFs  ", "RAMs ", "DSPs "]
+    , "children":
+    [
+      {
+        "name":"conv2d"
+        , "data":
+        [15601, 19567, 70, 15]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":27
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"fc_layer"
+        , "data":
+        [20591, 23662, 106, 10]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":107
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"maxpool2d"
+        , "data":
+        [5836, 10746, 53, 10]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":72
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Kernel Subtotal"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [42028, 53975, 229, 35]
+      }
+      , {
+        "name":"Global Interconnect"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [1089, 3869, 10, 0]
+      }
+      , {
+        "name":"Board Interface"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [2160, 1908, 20, 0]
+      }
+      , {
+        "name":"Total"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [45277, 59752, 259, 35]
+        , "data_percent":
+        [41.3217, 27.2661, 50.3891, 31.25]
+      }
+      , {
+        "name":"Available"
+        , "classes":
+        ["summary-highlight", "nohover"]
+        , "data":
+        [109572, 219144, 514, 112]
+      }
+    ]
+  }
+  , "compileWarnings":
+  {
+    "name":"Compile Warnings"
+    , "children":
+    [
+      {
+        "name":"Load uses a Burst-coalesced non-aligned LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Use Dynamic Profiler to determine performance impact of this LSU."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":52
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced non-aligned LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Use Dynamic Profiler to determine performance impact of this LSU."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":52
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced non-aligned LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Use Dynamic Profiler to determine performance impact of this LSU."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":86
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced non-aligned LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Use Dynamic Profiler to determine performance impact of this LSU."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":86
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced cached LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":118
+            }
+          ]
+        ]
+      }
+      , {
+        "name":"Load uses a Burst-coalesced non-aligned LSU"
+        , "details":
+        [
+          {
+            "type":"text"
+            , "text":"Use Dynamic Profiler to determine performance impact of this LSU."
+          }
+        ]
+        , "debug":
+        [
+          [
+            {
+              "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+              , "line":118
+            }
+          ]
+        ]
+      }
+    ]
+  }
+}

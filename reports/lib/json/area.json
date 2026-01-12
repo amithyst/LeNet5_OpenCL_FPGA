@@ -1,0 +1,1758 @@
+{
+  "columns":
+  ["", "ALUTs", "FFs", "RAMs", "DSPs", "Details"]
+  , "debug_enabled":"true"
+  , "type":"module"
+  , "total_percent":
+  [64.7856, 41.3217, 27.2661, 50.3891, 31.25]
+  , "total":
+  [45277, 59752, 259, 35]
+  , "name":"Kernel System"
+  , "max_resources":
+  [109572, 219144, 514, 112]
+  , "children":
+  [
+    {
+      "name":"Board interface"
+      , "type":"resource"
+      , "data":
+      [2160, 1908, 20, 0]
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Platform interface logic."
+        }
+      ]
+    }
+    , {
+      "name":"Global interconnect"
+      , "type":"resource"
+      , "data":
+      [1089, 3869, 10, 0]
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Global interconnect for 8 global loads and 3 global stores. Reduce number of global loads and stores to simplify global interconnect."
+        }
+        , {
+          "type":"text"
+          , "text":"See %L for more information"
+          , "links":
+          [
+            {
+              "guide":"Best Practices Guide : Global Memory Interconnect"
+              , "link":"https://www.altera.com/documentation/mwh1391807516407.html#hnj1476724450050"
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"conv2d"
+      , "compute_units":1
+      , "type":"function"
+      , "total_percent":
+      [21.8102, 14.2381, 8.92883, 13.6187, 13.3929]
+      , "total_kernel_resources":
+      [15601, 19567, 70, 15]
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Number of compute units: 1"
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"Function overhead"
+          , "type":"resource"
+          , "data":
+          [1574, 1505, 0, 0]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Kernel dispatch logic."
+            }
+          ]
+        }
+        , {
+          "name":"conv2d.B0"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [51, 101, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [51, 101, 0, 0]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [84, 44, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:35"
+                  , "type":"resource"
+                  , "data":
+                  [66, 0, 0, 2]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":35
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [66, 0, 0, 2]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"conv2d.B1"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [837, 1058, 2, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [837, 1058, 2, 0]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [153, 135, 2, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [302, 70, 0, 2]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":""
+                        , "line":0
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [132, 0, 0, 0]
+                    }
+                    , {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [66, 0, 0, 2]
+                    }
+                    , {
+                      "name":"And"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [1, 1, 0, 0]
+                    }
+                    , {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [35, 1, 0, 0]
+                    }
+                    , {
+                      "name":"Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [68, 68, 0, 0]
+                    }
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:32"
+                  , "type":"resource"
+                  , "data":
+                  [105.333, 3.33333, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":32
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [105, 3, 0, 0]
+                    }
+                    , {
+                      "name":"Or"
+                      , "type":"resource"
+                      , "count":5
+                      , "data":
+                      [0.333333, 0.333333, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:38"
+                  , "type":"resource"
+                  , "data":
+                  [44.6667, 1.66667, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":38
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                    , {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [11, 1, 0, 0]
+                    }
+                    , {
+                      "name":"Or"
+                      , "type":"resource"
+                      , "count":6
+                      , "data":
+                      [0.666667, 0.666667, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:39"
+                  , "type":"resource"
+                  , "data":
+                  [66, 0, 0, 2]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":39
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [66, 0, 0, 2]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:43"
+                  , "type":"resource"
+                  , "data":
+                  [58.3333, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":43
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [55, 0, 0, 0]
+                    }
+                    , {
+                      "name":"4-bit Integer Add"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [3.33333, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:44"
+                  , "type":"resource"
+                  , "data":
+                  [33, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":44
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:45"
+                  , "type":"resource"
+                  , "data":
+                  [11, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":45
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [11, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:51"
+                  , "type":"resource"
+                  , "data":
+                  [1.66667, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":51
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"4-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [1.66667, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:52"
+                  , "type":"resource"
+                  , "data":
+                  [9285, 10767, 32, 5]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":52
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [66, 0, 0, 0]
+                    }
+                    , {
+                      "name":"Floating-point Add"
+                      , "type":"resource"
+                      , "count":5
+                      , "data":
+                      [4975, 3585, 0, 0]
+                    }
+                    , {
+                      "name":"Floating-point Multiply"
+                      , "type":"resource"
+                      , "count":5
+                      , "data":
+                      [1370, 1200, 0, 5]
+                    }
+                    , {
+                      "name":"Load"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [2874, 5982, 32, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced non-aligned LSU.  Use Dynamic Profiler to determine performance impact of this LSU."
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"conv2d.B2"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [493, 777, 1, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [493, 777, 1, 0]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [95, 166, 4, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [131, 32, 0, 2]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":""
+                        , "line":0
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                    , {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [66, 0, 0, 2]
+                    }
+                    , {
+                      "name":"Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [32, 32, 0, 0]
+                    }
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:38"
+                  , "type":"resource"
+                  , "data":
+                  [35, 1, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":38
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [35, 1, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:57"
+                  , "type":"resource"
+                  , "data":
+                  [1465, 2735, 13, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":57
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Floating-point Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [995, 717, 0, 0]
+                    }
+                    , {
+                      "name":"Load"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [470, 2018, 13, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced LSU"
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:58"
+                  , "type":"resource"
+                  , "data":
+                  [465, 2128, 16, 2]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":58
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                    , {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [66, 0, 0, 2]
+                    }
+                    , {
+                      "name":"Store"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [366, 2128, 16, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Store uses a Burst-coalesced LSU"
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:58 > cnn.cl:8"
+                  , "type":"resource"
+                  , "data":
+                  [245, 43, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":58
+                      }
+                      , {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":8
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"And"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                    , {
+                      "name":"Floating-point Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [105, 8, 0, 0]
+                    }
+                    , {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [33, 3, 0, 0]
+                    }
+                    , {
+                      "name":"Select"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [74, 32, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"fc_layer"
+      , "compute_units":1
+      , "type":"function"
+      , "total_percent":
+      [27.7003, 18.7922, 10.7975, 20.6226, 8.92857]
+      , "total_kernel_resources":
+      [20591, 23662, 106, 10]
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Number of compute units: 1"
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"Function overhead"
+          , "type":"resource"
+          , "data":
+          [1574, 1505, 0, 0]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Kernel dispatch logic."
+            }
+          ]
+        }
+        , {
+          "name":"fc_layer.B0"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [51, 101, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [51, 101, 0, 0]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [84, 44, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"cnn.cl:118"
+                  , "type":"resource"
+                  , "data":
+                  [66, 0, 0, 2]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":118
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [66, 0, 0, 2]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"fc_layer.B1"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [896, 1052, 10, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [896, 1052, 10, 0]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [9, 155, 8, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [70, 2, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":""
+                        , "line":0
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [70, 2, 0, 0]
+                    }
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:117"
+                  , "type":"resource"
+                  , "data":
+                  [169.333, 6, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":117
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                    , {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":16
+                      , "data":
+                      [58.6667, 5.33333, 0, 0]
+                    }
+                    , {
+                      "name":"Or"
+                      , "type":"resource"
+                      , "count":23
+                      , "data":
+                      [77.6667, 0.666667, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:118"
+                  , "type":"resource"
+                  , "data":
+                  [14727, 15170, 59, 8]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":118
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                    , {
+                      "name":"Floating-point Add"
+                      , "type":"resource"
+                      , "count":8
+                      , "data":
+                      [7960, 5736, 0, 0]
+                    }
+                    , {
+                      "name":"Floating-point Multiply"
+                      , "type":"resource"
+                      , "count":8
+                      , "data":
+                      [2192, 1920, 0, 8]
+                    }
+                    , {
+                      "name":"Load"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [4542, 7514, 59, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced cached LSU.  Load with a private 64 kilobit cache. Cache is not shared with any other load. It is flushed on kernel start. Use Dynamic Profiler to verify cache effectiveness. Other kernels should not be updating the data in global memory while this kernel is using it. Cache is created when memory access pattern is data-dependent or appears to be repetitive. Simplify access pattern or mark pointer as 'volatile' to disable generation of this cache."
+                        }
+                        , {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced non-aligned LSU.  Use Dynamic Profiler to determine performance impact of this LSU."
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:119"
+                  , "type":"resource"
+                  , "data":
+                  [29.6667, 3, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":119
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":8
+                      , "data":
+                      [29.3333, 2.66667, 0, 0]
+                    }
+                    , {
+                      "name":"Or"
+                      , "type":"resource"
+                      , "count":8
+                      , "data":
+                      [0.333333, 0.333333, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+        , {
+          "name":"fc_layer.B2"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [316, 542, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [316, 542, 0, 0]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [190, 103, 0, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [26, 0, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":""
+                        , "line":0
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [26, 0, 0, 0]
+                    }
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:109"
+                  , "type":"resource"
+                  , "data":
+                  [35, 1, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":109
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [35, 1, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:117"
+                  , "type":"resource"
+                  , "data":
+                  [39, 5, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":117
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"And"
+                      , "type":"resource"
+                      , "count":36
+                      , "data":
+                      [4, 4, 0, 0]
+                    }
+                    , {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [35, 1, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:118"
+                  , "type":"resource"
+                  , "data":
+                  [194, 64, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":118
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Select"
+                      , "type":"resource"
+                      , "count":7
+                      , "data":
+                      [194, 64, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:119"
+                  , "type":"resource"
+                  , "data":
+                  [2, 2, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":119
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"And"
+                      , "type":"resource"
+                      , "count":18
+                      , "data":
+                      [2, 2, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:121"
+                  , "type":"resource"
+                  , "data":
+                  [1478, 2735, 13, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":121
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Floating-point Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [995, 717, 0, 0]
+                    }
+                    , {
+                      "name":"Load"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [470, 2018, 13, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced LSU"
+                        }
+                      ]
+                    }
+                    , {
+                      "name":"Select"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [13, 0, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:122"
+                  , "type":"resource"
+                  , "data":
+                  [377, 2129, 16, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":122
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [11, 1, 0, 0]
+                    }
+                    , {
+                      "name":"Store"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [366, 2128, 16, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Store uses a Burst-coalesced LSU"
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:122 > cnn.cl:8"
+                  , "type":"resource"
+                  , "data":
+                  [258, 43, 0, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":122
+                      }
+                      , {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":8
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"And"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                    , {
+                      "name":"Floating-point Compare"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [105, 8, 0, 0]
+                    }
+                    , {
+                      "name":"Integer Compare"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [33, 3, 0, 0]
+                    }
+                    , {
+                      "name":"Select"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [87, 32, 0, 0]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+    , {
+      "name":"maxpool2d"
+      , "compute_units":1
+      , "type":"function"
+      , "total_percent":
+      [9.87863, 5.32618, 4.90363, 10.3113, 8.92857]
+      , "total_kernel_resources":
+      [5836, 10746, 53, 10]
+      , "details":
+      [
+        {
+          "type":"text"
+          , "text":"Number of compute units: 1"
+        }
+      ]
+      , "children":
+      [
+        {
+          "name":"Function overhead"
+          , "type":"resource"
+          , "data":
+          [1574, 1505, 0, 0]
+          , "details":
+          [
+            {
+              "type":"text"
+              , "text":"Kernel dispatch logic."
+            }
+          ]
+        }
+        , {
+          "name":"maxpool2d.B0"
+          , "type":"basicblock"
+          , "children":
+          [
+            {
+              "name":"State"
+              , "type":"resource"
+              , "data":
+              [1153, 1914, 1, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Resources for live values and control logic. To reduce this area:"
+                  , "details":
+                  [
+                    {
+                      "type":"text"
+                      , "text":"reduce size of local variables"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce scope of local variables, localizing them as much as possible"
+                    }
+                    , {
+                      "type":"text"
+                      , "text":"reduce number of nested loops"
+                    }
+                  ]
+                }
+              ]
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [1153, 1914, 1, 0]
+                }
+              ]
+            }
+            , {
+              "name":"Cluster logic"
+              , "type":"resource"
+              , "data":
+              [299, 241, 4, 0]
+              , "details":
+              [
+                {
+                  "type":"text"
+                  , "text":"Logic required to efficiently support sets of operations that do not stall. This area cannot be affected directly."
+                }
+              ]
+            }
+            , {
+              "name":"Computation"
+              , "type":"resource"
+              , "children":
+              [
+                {
+                  "name":"No Source Line"
+                  , "type":"resource"
+                  , "data":
+                  [806, 128, 0, 6]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":""
+                        , "line":0
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [66, 0, 0, 0]
+                    }
+                    , {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [198, 0, 0, 6]
+                    }
+                    , {
+                      "name":"Floating-point Compare"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [420, 32, 0, 0]
+                    }
+                    , {
+                      "name":"Select"
+                      , "type":"resource"
+                      , "count":4
+                      , "data":
+                      [122, 96, 0, 0]
+                    }
+                  ]
+                }
+                , {
+                  "name":"cnn.cl:85"
+                  , "type":"resource"
+                  , "data":
+                  [165, 0, 0, 2]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":85
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":3
+                      , "data":
+                      [99, 0, 0, 0]
+                    }
+                    , {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [66, 0, 0, 2]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:86"
+                  , "type":"resource"
+                  , "data":
+                  [1374, 4830, 32, 0]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":86
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"Load"
+                      , "type":"resource"
+                      , "count":2
+                      , "data":
+                      [1374, 4830, 32, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Load uses a Burst-coalesced non-aligned LSU.  Use Dynamic Profiler to determine performance impact of this LSU."
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+                , {
+                  "name":"cnn.cl:91"
+                  , "type":"resource"
+                  , "data":
+                  [465, 2128, 16, 2]
+                  , "debug":
+                  [
+                    [
+                      {
+                        "filename":"g:/intelFPGA/18.1/hld/students_workspace/dukaijie25/lenet5/device/cnn.cl"
+                        , "line":91
+                      }
+                    ]
+                  ]
+                  , "children":
+                  [
+                    {
+                      "name":"32-bit Integer Add"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [33, 0, 0, 0]
+                    }
+                    , {
+                      "name":"32-bit Integer Multiply"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [66, 0, 0, 2]
+                    }
+                    , {
+                      "name":"Store"
+                      , "type":"resource"
+                      , "count":1
+                      , "data":
+                      [366, 2128, 16, 0]
+                      , "details":
+                      [
+                        {
+                          "type":"text"
+                          , "text":"Store uses a Burst-coalesced LSU"
+                        }
+                      ]
+                    }
+                  ]
+                  , "replace_name":"true"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
