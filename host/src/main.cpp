@@ -193,7 +193,7 @@ void run_inference_pass() {
 // 主函数
 // ========================================================
 int main(int argc, char* argv[]) {
-    int num_to_run = 1; // 默认只跑 1 张
+    int num_to_run = 1; // 默认只跑 1 张s
     bool verbose = true; // 默认打印详细信息
 
     // --- 简单参数解析 ---
